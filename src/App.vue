@@ -8,12 +8,12 @@
     </div>
     <nav>
       <ol>
-        <li v-if="state"  @click="goToHome">Home</li>
-         <li @click="goToAboutus">About-us</li>
-        <li @click="goToSignin" v-if="visible">Sign-in</li>
-        <li @click="goToSignup" v-if="visible">Sign-up</li>
+        <li v-if="state"  @click=" changeRoute('home')">Home</li>
+        <li @click=" changeRoute('aboutus')">About-us</li>
+        <li @click=" changeRoute('signin')" v-if="visible">Sign-in</li>
+        <li @click=" changeRouter('signup')" v-if="visible">Sign-up</li>
         <li @click="signOut" v-if="state">Sign-out</li>
-       </ol>
+      </ol>
           
           
     </nav>
@@ -64,30 +64,14 @@ export default {
          console.log(data);
          this.$router.replace({name:"signin"})
      }catch(err){
-       consoel.log(err);
+       console.log(err);
      }
      
    },
-   goToSignup(){
-         this.$router.replace({name:"signup"});
-     },
-     goToSignin(){
-       this.$router.replace({name:"signin"});
-     },
-     goToHome(){
-       this.$router.replace({name:"home"});
-     },
-     isUnderlined(){
-       if(this.$router.name="home"){
-          this.underline = true;
-       }
-        if(this.$router.name="signin"){
-          this.underline = true;
-       }
-     },
-     goToAboutus(){
-         this.$router.replace({name:"aboutus"});
-     },
+   //one function for changing the route
+   changeRoute(value){
+     this.$router.replace({name:value})
+   }
 
 },
 created(){
