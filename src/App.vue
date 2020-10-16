@@ -83,6 +83,8 @@ created(){
     this.bgState= !!user;
   })
 }
+//this is comment 1
+//this is comment 2
 }
 </script>
 <style scoped>
