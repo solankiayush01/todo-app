@@ -11,6 +11,7 @@ Vue.config.productionTip = false;
 
    //Your web app's Firebase configuration
   //For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  //what we need for authentication 
   const firebaseConfig = {
     apiKey: "AIzaSyBLI60AMgZmxmg_lw_SaHdMHI1uE6uIeVY",
     authDomain: "todo-app-240cc.firebaseapp.com",
@@ -23,7 +24,7 @@ Vue.config.productionTip = false;
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+  firebase.analytics();// why??
 //Vue.use(vueResource);
 Vue.use(vueRouter);
 // all components imported
@@ -35,6 +36,7 @@ import Try from './components/try.vue';
 import Try2 from './components/try2.vue';
 //now created all compnents
 
+//have not to be global
 Vue.component("todo",todoList);
 Vue.component("signup",SignUp);
 Vue.component("signin",SignIn);
@@ -42,6 +44,7 @@ Vue.component("aboutus",AboutUs);
 Vue.component("try",Try);
 Vue.component("try2",Try2);
 //router
+
 const router = new vueRouter(
 {
  routes : Routes,
@@ -49,7 +52,7 @@ const router = new vueRouter(
 }
 
 )
-export const bus = new Vue(); 
+
 
 new Vue({
   store:store,

@@ -2,6 +2,7 @@
 <div>
     <h1>TODO List....</h1>
     <h2>SIGN-IN Here</h2>
+    <p v-if="errorState">Invalid username or password!!<p>
     <div id = "signinForm">
         <form @submit.prevent="submitDetails">
       <label for="username">Username/E-mail Id:</label><br>
@@ -43,7 +44,7 @@ export default {
   },
   data () {
     return {
-       
+       errorState:false
   }
   },
   methods:{
@@ -53,7 +54,7 @@ export default {
             this.$router.replace({name:"home"})
           },
          err =>{
-             alert(err);
+             this.errorState = true
          }
           );
   
@@ -119,5 +120,9 @@ button{
 button:hover{
     background-color:grey ;
 
+}
+p{
+    color : #f76157;
+    font-size: 1.2em;
 }
 </style>

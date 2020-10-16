@@ -8,7 +8,7 @@
         <li>Write your todo in the input box</li>
         <li>And press the add button.</li>
         <li>Simple :)</li>
-        </ol>
+    </ol>
        <div id = "userInput">
            <h3>Enter Your item here..</h3>
        <input type="text" v-model="todoList">
@@ -22,12 +22,13 @@
 
 
 <script>
-import { mapState } from 'vuex';
+//import { mapState } from 'vuex';
 import ShowList from './showlist.vue';
 export default {
   components:{
       'show-list': ShowList
   },
+  //can make some our function without get or set
   computed:{
      todoList:{
        get(){
