@@ -3,7 +3,7 @@
     <div id = "itemsBox">
         <h2>Here is your todo list...</h2>
         <ol id = "listContainer">
-         <li v-for="(listItem,index) in listArr" :key="index" @dblclick="updateItem(index)">
+         <li v-for="(listItem,index) in listArr" :id='index' :key="index" @dblclick="updateItem(index),changeBackgroundColor(index)">
             {{listItem}}
             <button @click="removeItem(index)">X</button>
          </li>
@@ -35,6 +35,9 @@ export default {
     },
     updateItem(index){
       this.$store.commit('updateItem',index)
+    },
+    changeBackgroundColor(value){
+      document.getElementById(value).style.backgroundColor = "darkgrey";
     }
    
    },
