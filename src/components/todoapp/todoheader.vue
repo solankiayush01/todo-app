@@ -27,24 +27,29 @@ export default {
      components:{
   
   },
+  computed:{
+   logged() {
+     return this.$store.state.logged;
+   },
+   bgState(){
+     return this.$store.state.bgState;
+   },
+   state(){
+     return this.$store.state.state;
+   },
+   visible(){
+     return this.$store.state.visible;
+   }
+  },
   data () {
     return {
-      logged:false,
-      state:false,
-      visible:true,
-      underline:false,
-      bgState:false
+     
   }
   },
   methods:{
    signOut(){
-     try{
-         const data = firebase.auth().signOut();
-         console.log(data);
-         this.$router.replace({name:"signin"})
-     }catch(err){
-       console.log(err);
-     }
+   this.$store.commit('signOut');
+   this.$router.replace({name:"signin"})
      
    },
    //one function for changing the route
@@ -54,13 +59,7 @@ export default {
 
 },
 created(){
-  firebase.auth().onAuthStateChanged(user =>{
-    this.logged = !!user;
-    this.state = !!user;
-    this.visible = !user;
-    this.underline = !!user;
-    this.bgState= !!user;
-  })
+ this.$store.commit('createNewUser');
 }
 }
 </script>

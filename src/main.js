@@ -28,22 +28,22 @@ Vue.config.productionTip = false;
 //Vue.use(vueResource);
 Vue.use(vueRouter);
 // all components imported
-import todoList from './components/todoapp/todo.vue'
-import SignUp from './components/todoapp/todosignup.vue'
-import SignIn from './components/todoapp/todosignin.vue'
-import AboutUs from './components/todoapp/aboutus.vue';
-import Try from './components/try.vue';
-import Try2 from './components/try2.vue';
-//now created all compnents
+// import todoList from './components/todoapp/todo.vue'
+// import SignUp from './components/todoapp/todosignup.vue'
+// import SignIn from './components/todoapp/todosignin.vue'
+// import AboutUs from './components/todoapp/aboutus.vue';
+// import Try from './components/try.vue';
+// import Try2 from './components/try2.vue';
+// //now created all compnents
 
-//have not to be global
-Vue.component("todo",todoList);
-Vue.component("signup",SignUp);
-Vue.component("signin",SignIn);
-Vue.component("aboutus",AboutUs);
-Vue.component("try",Try);
-Vue.component("try2",Try2);
-//router
+// //have not to be global
+// Vue.component("todo",todoList);
+// Vue.component("signup",SignUp);
+// Vue.component("signin",SignIn);
+// Vue.component("aboutus",AboutUs);
+// Vue.component("try",Try);
+// Vue.component("try2",Try2);
+// //router
 
 const router = new vueRouter(
 {

@@ -11,7 +11,7 @@
     </ol>
        <div id = "userInput">
            <h3>Enter Your item here..</h3>
-       <input type="text" v-model="todoList">
+       <input :value="todoList" @input="updateList">
         <button @click="addItems">Add list item</button>
         <button v-show="updateState" @click="addUpdatedItem">Update Item</button>
        </div>
@@ -22,7 +22,7 @@
 
 
 <script>
-//import { mapState } from 'vuex';
+import { mapState } from 'vuex';
 import ShowList from './showlist.vue';
 export default {
   components:{
@@ -30,21 +30,22 @@ export default {
   },
   //can make some our function without get or set
   computed:{
-     todoList:{
-       get(){
-        return this.$store.state.todoList
-       },
-       set(value){
-         this.$store.commit("updateList",value)
-       },
-     
-     },
+    // //  todoList:{
+    // //    get(){
+    // //     return this.$store.state.todoList
+    // //    },
+    // //    set(value){
+    // //      this.$store.commit("updateList",value)
+    // //    },
+    
+    //  },
+
        updateState(){
          return this.$store.state.updateState;
-       }
-    // ...mapState({
-    //   todoList : state => state.todoList
-    // })
+       },
+    ...mapState({
+      todoList : state => state.todoList
+    })
   },
   data () {
     return {
@@ -55,9 +56,9 @@ export default {
        addItems(){
          this.$store.commit("addItems")
       },
-      // updateList(e){
-      //      this.$store.commit('updateList',e.target.value);
-      // }
+      updateList(e){
+           this.$store.commit('updateList',e.target.value);
+      },
       addUpdatedItem(){
         this.$store.commit("addUpdatedItem")
       }

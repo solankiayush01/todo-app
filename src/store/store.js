@@ -14,6 +14,11 @@ Vue.use(Vuex);
            error:"",
            signUpEmail:"",
            signUpPassword:"",
+           logged:false,
+           bgState:false,
+           state:false,
+           visible:true,
+           underline:false
          },
         mutations:{
             addItems: state=>{
@@ -60,6 +65,28 @@ Vue.use(Vuex);
             trackSignUpPassword(state,value){
                 state.signUpPassword = value
             },
+            createNewUser(state){
+                firebase.auth().onAuthStateChanged(user =>{
+                    this.state.logged = !!user;
+                    this.state.state = !!user;
+                    this.state.visible = !user;
+                    this.state.underline = !!user;
+                    this.state.bgState= !!user;
+                  })
+            },
+            changeState(state){
+                this.state.logged = true;
+                this.state.bgState = true;
+                this.state.state = true;
+            },
+            signOut(){
+                try{
+                    const data = firebase.auth().signOut();
+                    console.log(data);
+                }catch(err){
+                  console.log(err);
+                }
+            }
         }
      
  });

@@ -3,7 +3,7 @@
     <h1>TODO List....</h1>
     <h2>SIGN-UP form</h2>
     <div id = "forms">
-    <form @submit.prevent= "submitDetails">
+    <form @submit.prevent= "submitDetail">
       <label for="username">User Name:</label><br>
       <input type="text" id = "username" placeholder="ayush solanki"><br>
       <label for="upassword">Password:</label><br>
@@ -20,7 +20,7 @@
       <label for="notifications">Do you want to recieve notifications?</label><br>
       <input type="radio" name="notifi" value="Yes" checked>Yes<br>
      <input type="radio" name="notifi" value="No"> No<br>
-      <button type="submit">Submit</button>
+      <button type="submit" @click="changeState">Submit</button>
     </form>
     </div>
 </div>
@@ -65,6 +65,9 @@ export default {
           console.log(err);
         }
       
+    },
+    changeState(){
+        this.$store.commit('changeState')
     }
 }
 }

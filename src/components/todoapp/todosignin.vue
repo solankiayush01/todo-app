@@ -49,7 +49,8 @@ export default {
   },
   methods:{
     submitDetails(){
-          firebase.auth().signInWithEmailAndPassword(this.$store.state.email,this.$store.state.password).then(user=>{
+          firebase.auth().signInWithEmailAndPassword(this.$store.state.email,this.$store.state.password)
+          .then(user=>{
             console.log(user);
             this.$router.replace({name:"home"})
           },
