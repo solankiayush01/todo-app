@@ -18,7 +18,8 @@ Vue.use(Vuex);
            bgState:false,
            state:false,
            visible:true,
-           underline:false
+           underline:false,
+           list : []
          },
         mutations:{
             addItems: state=>{
@@ -66,13 +67,14 @@ Vue.use(Vuex);
                 state.signUpPassword = value
             },
             createNewUser(state){
-                firebase.auth().onAuthStateChanged(user =>{
-                    this.state.logged = !!user;
-                    this.state.state = !!user;
-                    this.state.visible = !user;
-                    this.state.underline = !!user;
-                    this.state.bgState= !!user;
-                  })
+                // firebase.auth().onAuthStateChanged(user =>{
+                //    // this.state.logged = !!user;
+                //     console.log(this.state.logged);
+                //     this.state.state = !!user;
+                //     this.state.visible = !user;
+                //     this.state.underline = !!user;
+                //     this.state.bgState= !!user;
+                //   })
             },
             changeState(state){
                 this.state.logged = true;

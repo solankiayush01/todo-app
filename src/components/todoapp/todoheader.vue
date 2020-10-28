@@ -54,7 +54,8 @@ export default {
    },
    //one function for changing the route
    changeRoute(value){
-     this.$router.replace({name:value})
+     this.$router.replace({name:value});
+    
    }
 
 },

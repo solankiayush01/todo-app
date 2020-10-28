@@ -24,6 +24,16 @@ export default {
   components:{
   
   },
+  created(){
+    firebase.auth().onAuthStateChanged(user =>{
+                    this.$store.state.logged = !!user;
+                    console.log(this.$store.state.logged)
+                    this.$store.state.state = !!user;
+                    this.$store.state.visible = !user;
+                    this.$store.state.underline = !!user;
+                    this.$store.state.bgState= !!user;
+                  })
+},
   computed:{
     email:{
         get(){
@@ -51,9 +61,9 @@ export default {
     submitDetails(){
           firebase.auth().signInWithEmailAndPassword(this.$store.state.email,this.$store.state.password)
           .then(user=>{
-            console.log(user);
-            this.$router.replace({name:"home"})
-          },
+              console.log(user);
+              this.$router.replace({name:'home'})
+           },
          err =>{
              this.errorState = true
          }
